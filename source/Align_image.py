@@ -4,7 +4,8 @@
 # adapted from https://thinkinfi.com/image-alignment-and-registration-with-opencv/
 
 """
-    Usage:
+    Usage: python3 Align_image.py -i inputfile.jpg -o outputfile.jpg -r referencefile.jpg 
+           *Tested only on Ubuntu thus far * 
     Bugs: None yet
 """
 
