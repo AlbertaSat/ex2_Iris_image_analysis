@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
-
+import matplotlib.pyplot as plt
+import scipy
 def align_images(img1, img2):
     # Convert images to grayscale
     gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -45,10 +46,17 @@ def calculate_ndvi(red, nir):
     return ndvi
 
 # Example usage
-img1 = cv2.imread("image1.jpg")
-img2 = cv2.imread("image2.jpg")
+img1 = cv2.imread("source/testImages/crop1.jpg")
+img2 = cv2.imread("source/testImages/crop2.jpg")
 aligned_img1 = align_images(img1, img2)
-red = aligned_img1[:, :, 2]
-nir = img2[:, :, 3]
+# cv2.imshow(img1)
+# cv2.imshow(aligned_img1)
+red = aligned_img1[:, :, 1]
+nir = img2[:, :, 2]
 ndvi = calculate_ndvi(red, nir)
-print(ndvi)
+print(ndvi[0])
+ndvi = np.interp(ndvi, [-1, 1], [0, 255])
+print(ndvi[0])
+plt.hist(ndvi.flatten(), bins=400)
+plt.show()
+# plt.imshow(ndvi, interpolation="none")
