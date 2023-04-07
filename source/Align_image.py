@@ -42,7 +42,7 @@ def main(argv):
     print('Reference file is', referencefile)
 
     # assert files exist
-    for i in [inputfile, outputfile, referencefile]:
+    for i in [inputfile, referencefile]:
         if not os.path.exists(i):
             print(i, "is an invalid file")
             sys.exit(2)
